@@ -17,6 +17,7 @@
 		B0B7297B23E0F5F80097CD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B7297A23E0F5F80097CD63 /* Assets.xcassets */; };
 		B0B7297E23E0F5F80097CD63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B7297C23E0F5F80097CD63 /* LaunchScreen.storyboard */; };
 		B0B7298623E0F64C0097CD63 /* Smashing-Things.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B0B7298523E0F64C0097CD63 /* Smashing-Things.atlas */; };
+		B0C7EE9C23FC9D1D000F7504 /* Level-3.sks in Resources */ = {isa = PBXBuildFile; fileRef = B0C7EE9B23FC9D1D000F7504 /* Level-3.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B0B7297D23E0F5F80097CD63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0B7297F23E0F5F80097CD63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0B7298523E0F64C0097CD63 /* Smashing-Things.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "Smashing-Things.atlas"; sourceTree = "<group>"; };
+		B0C7EE9B23FC9D1D000F7504 /* Level-3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-3.sks"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				B0B7296D23E0F5F70097CD63 /* AppDelegate.swift */,
 				B0B7296F23E0F5F70097CD63 /* Level-1.sks */,
 				B08984EC23E39E300018E422 /* Level-2.sks */,
+				B0C7EE9B23FC9D1D000F7504 /* Level-3.sks */,
 				B0B7297323E0F5F70097CD63 /* GameScene.swift */,
 				B0B7297523E0F5F70097CD63 /* GameViewController.swift */,
 				B08984EA23E37ECD0018E422 /* Orange.swift */,
@@ -140,6 +143,7 @@
 				B0B7298623E0F64C0097CD63 /* Smashing-Things.atlas in Resources */,
 				B0B7297923E0F5F70097CD63 /* Main.storyboard in Resources */,
 				B0B7297023E0F5F70097CD63 /* Level-1.sks in Resources */,
+				B0C7EE9C23FC9D1D000F7504 /* Level-3.sks in Resources */,
 				B08984ED23E39E300018E422 /* Level-2.sks in Resources */,
 				B0B7297B23E0F5F80097CD63 /* Assets.xcassets in Resources */,
 				B0B7297E23E0F5F80097CD63 /* LaunchScreen.storyboard in Resources */,

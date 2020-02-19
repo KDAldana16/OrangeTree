@@ -8,19 +8,28 @@
 
 import SpriteKit
 
-var orangeTree: SKSpriteNode!
-var orange: Orange?
-var touchStart: CGPoint = .zero
-var shapeNode = SKShapeNode()
-var boundary = SKNode()
-var numOfLevels: UInt32 = 2
-
-
 
 class GameScene: SKScene {
+    
+    // Class method to load .sks files
+     static func Load(level: Int) -> GameScene? {
+         return GameScene(fileNamed: "Level-\(level)")
+     }
+    
+    var orangeTree: SKSpriteNode!
+    var orange: Orange?
+    
+    var touchStart: CGPoint = .zero
+    
+    var shapeNode = SKShapeNode()
+    
+    var boundary = SKNode()
+    
+    var numOfLevels: UInt32 = 3
+    
     override func didMove(to view: SKView) {
         // Connect Game Objects
-        orangeTree = childNode(withName: "tree") as? SKSpriteNode
+        orangeTree = (childNode(withName: "tree") as! SKSpriteNode)
         
         //Configure shapeNode
         shapeNode.lineWidth = 20
@@ -39,14 +48,9 @@ class GameScene: SKScene {
         // Add the Sun to the scene
         let sun = SKSpriteNode(imageNamed: "Sun")
         sun.name = "sun"
-        sun.position.x = size.width - (sun.size.width * 0.75)
-        sun.position.y = size.height - (sun.size.height * 0.75)
+        sun.position.x = size.width - (sun.size.width * 0.80)
+        sun.position.y = size.height - (sun.size.height * 0.80)
         addChild(sun)
-    }
-    
-    // Class method to load .sks files
-    static func Load(level: Int) -> GameScene? {
-        return GameScene(fileNamed: "Level-\(level)")
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -54,34 +58,34 @@ class GameScene: SKScene {
         let touch = touches.first!
         let location = touch.location(in: self)
         
-        //Check if the touch was on the Orange Tree
+        // Check if the touch was on the Orange Tree
         if atPoint(location).name == "tree" {
-            //Create the orange and add it to the scene at the touch location
+            // Create the orange and add it to the scene at the touch location
             orange = Orange()
             orange?.physicsBody?.isDynamic = false
             orange?.position = location
             addChild(orange!)
             
-            //Store the location of the touch
+            // Store the location of the touch
             touchStart = location
         }
         
-        // Check whether the sun was tapped and change the level
-        for node in nodes(at: location) {
-            if node.name == "sun" {
-                let n = Int(arc4random() % numOfLevels + 1)
-                if let scene = GameScene.Load(level: n) {
-                    scene.scaleMode = .aspectFill
-                    if let view = view {
-                        view.presentScene(scene)
-                    }
-                }
-            }
-        }
+       // Check whether the sun was tapped and change the level
+       for node in nodes(at: location) {
+         if node.name == "sun" {
+           let n = Int(arc4random() % numOfLevels + 1)
+           if let scene = GameScene.Load(level: n) {
+             scene.scaleMode = .aspectFill
+             if let view = view {
+               view.presentScene(scene)
+             }
+           }
+         }
+       }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //Get the location of the touch
+        // Get the location of the touch
         let touch = touches.first!
         let location = touch.location(in: self)
         
@@ -96,26 +100,20 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //Get the location where the touch ended
+        // Get the location where the touch ended
         let touch = touches.first!
         let location = touch.location(in: self)
         
         // Get the difference between the start and end point as a vector
-        // New code
         let dx = (touchStart.x - location.x) * 0.5
         let dy = (touchStart.y - location.y) * 0.5
-        
-        // Old code
-        _ = touchStart.x - location.x
-        _ = touchStart.y - location.y
-        
         let vector = CGVector (dx: dx, dy: dy)
         
-        //Set the Orange dynamic again and apply the vector as an impulse
+        // Set the Orange dynamic again and apply the vector as an impulse
         orange?.physicsBody?.isDynamic = true
         orange?.physicsBody?.applyImpulse(vector)
         
-        //Remove the path from shapeNode
+        // Remove the path from shapeNode
         shapeNode.path = nil
     }
     
@@ -127,7 +125,7 @@ extension GameScene: SKPhysicsContactDelegate {
         let nodeA = contact.bodyA.node
         let nodeB = contact.bodyB.node
         
-    //Check that the bodies collided hard enough
+        // Check that the bodies collided hard enough
         if contact.collisionImpulse > 15 {
             if nodeA?.name == "skull" {
                 removeSkull(node: nodeA!)
